@@ -4,36 +4,36 @@ import de.uni_mannheim.informatik.wdi.datafusion.AttributeValueFuser;
 import de.uni_mannheim.informatik.wdi.datafusion.FusedValue;
 import de.uni_mannheim.informatik.wdi.datafusion.RecordGroup;
 import de.uni_mannheim.informatik.wdi.datafusion.conflictresolution.string.LongestString;
-import de.uni_mannheim.informatik.wdi.datafusion.usecase.movies.FusableMovie;
+import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.FusableCity;
 
-public class NameFuser extends AttributeValueFuser<String, FusableMovie> {
+public class NameFuser extends AttributeValueFuser<String, FusableCity> {
 
 	public NameFuser() {
-		super(new LongestString<FusableMovie>());
+		super(new LongestString<FusableCity>());
 	}
 	
 	@Override
-	public void fuse(RecordGroup<FusableMovie> group,
-			FusableMovie fusedRecord) {
+	public void fuse(RecordGroup<FusableCity> group,
+			FusableCity fusedRecord) {
 		
 		// get the fused value
-		FusedValue<String, FusableMovie> fused = getFusedValue(group);
+		FusedValue<String, FusableCity> fused = getFusedValue(group);
 		
 		// set the value for the fused record
-		fusedRecord.setTitle(fused.getValue());
+		fusedRecord.setName(fused.getValue());
 		
 		// add provenance info
-		fusedRecord.setAttributeProvenance(FusableMovie.TITLE, fused.getOriginalIds());
+		fusedRecord.setAttributeProvenance(FusableCity.NAME, fused.getOriginalIds());
 	}
 
 	@Override
-	public boolean hasValue(FusableMovie record) {
-		return record.hasValue(FusableMovie.TITLE);
+	public boolean hasValue(FusableCity record) {
+		return record.hasValue(FusableCity.NAME);
 	}
 	
 	@Override
-	protected String getValue(FusableMovie record) {
-		return record.getTitle();
+	protected String getValue(FusableCity record) {
+		return record.getName();
 	}
 
 }
