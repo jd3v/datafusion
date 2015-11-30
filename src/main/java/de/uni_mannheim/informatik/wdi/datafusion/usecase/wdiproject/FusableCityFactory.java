@@ -11,6 +11,7 @@ import org.w3c.dom.Node;
 import de.uni_mannheim.informatik.wdi.MatchableFactory;
 import de.uni_mannheim.informatik.wdi.datafusion.FusableFactory;
 import de.uni_mannheim.informatik.wdi.datafusion.RecordGroup;
+import de.uni_mannheim.informatik.wdi.usecase.wdiproject.Musician;
 
 public class FusableCityFactory extends MatchableFactory<FusableCity> implements FusableFactory<FusableCity> {
 
@@ -23,37 +24,42 @@ public class FusableCityFactory extends MatchableFactory<FusableCity> implements
 		
 		// fill the attributes
 		city.setName(getValueFromChildElement(node, "name"));
+		city.setCc(getValueFromChildElement(node, "cc"));
+		city.setPopulation(Integer.valueOf(getValueFromChildElement(node, "population")));
+		city.setLat(Double.valueOf(getValueFromChildElement(node,"lat")));
+		city.setLon(Double.valueOf(getValueFromChildElement(node, "lon")));
 		
-		String director = getValueFromChildElement(node, "director");
-		if(director!=null) {
-			city.setDirector(director.replace("\n", " "));
-		}
-
-		// convert the date string into a DateTime object
-		try {
-			String date = getValueFromChildElement(node, "date");
-			if(date!=null && !date.isEmpty()) {
-				DateTime dt = DateTime.parse(date);
-				city.setDate(dt);
-			}
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		
+//		String director = getValueFromChildElement(node, "director");
+//		if(director!=null) {
+//			city.setDirector(director.replace("\n", " "));
+//		}
+//
+//		// convert the date string into a DateTime object
+//		try {
+//			String date = getValueFromChildElement(node, "date");
+//			if(date!=null && !date.isEmpty()) {
+//				DateTime dt = DateTime.parse(date);
+//				city.setDate(dt);
+//			}
+//		} catch(Exception e) {
+//			e.printStackTrace();
+//		}
 		
 		// load the list of actors
-		List<Actor> actors = getObjectListFromChildElement(node, "actors", "actor", new ActorFactory(), provenanceInfo);
-		city.setActors(actors);
+		List<Musician> musicians = getObjectListFromChildElement(node, "musicians", "musician", new MusicianFactory(), provenanceInfo);
+		city.setMusicians(musicians);
 		
 		return city;
 	}
 
 	@Override
-	public FusableMovie createInstanceForFusion(
-			RecordGroup<FusableMovie> cluster) {
+	public FusableCity createInstanceForFusion(
+			RecordGroup<FusableCity> cluster) {
 		
 		List<String> ids = new LinkedList<>();
 		
-		for(FusableMovie m : cluster.getRecords()) {
+		for(FusableCity m : cluster.getRecords()) {
 			ids.add(m.getIdentifier());
 		}
 		
@@ -61,7 +67,7 @@ public class FusableCityFactory extends MatchableFactory<FusableCity> implements
 		
 		String mergedId = StringUtils.join(ids, '+');
 		
-		return new FusableMovie(mergedId, "fused");
+		return new FusableCity(mergedId, "fused");
 	}
 	
 }
