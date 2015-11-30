@@ -70,8 +70,10 @@ public class Cities_Main {
 		// Note: The attribute name is only used for printing the reports
 		strategy.addAttributeFuser("Name", new NameFuser(), new NameEvaluationRule());
 		strategy.addAttributeFuser("ContryCode", new CountryCodeFuser(), new CountryCodeEvaluationRule());
-		strategy.addAttributeFuser("Date", new DateFuser(), new DateEvaluationRule());
-		strategy.addAttributeFuser("Actors", new ActorsFuser(), new ActorsEvaluationRule());
+		strategy.addAttributeFuser("Population", new PopulationFuser(), new PopulationEvaluationRule());
+		strategy.addAttributeFuser("Lat", new LatFuser(), new LatEvaluationRule());
+		strategy.addAttributeFuser("Long", new LongFuser(), new LongEvaluationRule());
+
 
 		// create the fusion engine
 		DataFusionEngine<FusableCity> engine = new DataFusionEngine<>(strategy);

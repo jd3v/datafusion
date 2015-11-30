@@ -7,8 +7,9 @@ import de.uni_mannheim.informatik.wdi.datafusion.FusedValue;
 import de.uni_mannheim.informatik.wdi.datafusion.RecordGroup;
 import de.uni_mannheim.informatik.wdi.datafusion.conflictresolution.Voting;
 import de.uni_mannheim.informatik.wdi.datafusion.usecase.movies.FusableMovie;
+import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.FusableCity;
 
-public class LatFuser extends AttributeValueFuser<DateTime, FusableMovie> {
+public class LatFuser extends AttributeValueFuser<DateTime, FusableCity> {
 
 	public LatFuser() {
 		super(new Voting<DateTime, FusableMovie>());

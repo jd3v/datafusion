@@ -22,11 +22,11 @@ public class FusableCityFactory extends MatchableFactory<FusableCity> implements
 		FusableCity city = new FusableCity(id, provenanceInfo);
 		
 		// fill the attributes
-		city.setTitle(getValueFromChildElement(node, "title"));
+		city.setName(getValueFromChildElement(node, "name"));
 		
 		String director = getValueFromChildElement(node, "director");
 		if(director!=null) {
-			movie.setDirector(director.replace("\n", " "));
+			city.setDirector(director.replace("\n", " "));
 		}
 
 		// convert the date string into a DateTime object
@@ -34,7 +34,7 @@ public class FusableCityFactory extends MatchableFactory<FusableCity> implements
 			String date = getValueFromChildElement(node, "date");
 			if(date!=null && !date.isEmpty()) {
 				DateTime dt = DateTime.parse(date);
-				movie.setDate(dt);
+				city.setDate(dt);
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -42,9 +42,9 @@ public class FusableCityFactory extends MatchableFactory<FusableCity> implements
 		
 		// load the list of actors
 		List<Actor> actors = getObjectListFromChildElement(node, "actors", "actor", new ActorFactory(), provenanceInfo);
-		movie.setActors(actors);
+		city.setActors(actors);
 		
-		return movie;
+		return city;
 	}
 
 	@Override
