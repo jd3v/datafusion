@@ -12,17 +12,17 @@ import de.uni_mannheim.informatik.wdi.MatchableFactory;
 import de.uni_mannheim.informatik.wdi.datafusion.FusableFactory;
 import de.uni_mannheim.informatik.wdi.datafusion.RecordGroup;
 
-public class FusableMovieFactory extends MatchableFactory<FusableMovie> implements FusableFactory<FusableMovie> {
+public class FusableCityFactory extends MatchableFactory<FusableCity> implements FusableFactory<FusableCity> {
 
 	@Override
-	public FusableMovie createModelFromElement(Node node, String provenanceInfo) {
+	public FusableCity createModelFromElement(Node node, String provenanceInfo) {
 		String id = getValueFromChildElement(node, "id");
 		
 		// create the object with id and provenance information
-		FusableMovie movie = new FusableMovie(id, provenanceInfo);
+		FusableCity city = new FusableCity(id, provenanceInfo);
 		
 		// fill the attributes
-		movie.setTitle(getValueFromChildElement(node, "title"));
+		city.setTitle(getValueFromChildElement(node, "title"));
 		
 		String director = getValueFromChildElement(node, "director");
 		if(director!=null) {

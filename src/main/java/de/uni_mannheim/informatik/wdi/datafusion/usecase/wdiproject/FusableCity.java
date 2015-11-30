@@ -8,8 +8,9 @@ import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
 
 import de.uni_mannheim.informatik.wdi.datafusion.Fusable;
+import de.uni_mannheim.informatik.wdi.usecase.wdiproject.City;
 
-public class FusableMovie extends Movie implements Fusable {
+public class FusableCity extends City implements Fusable {
 
 	public static final String TITLE = "Title";
 	public static final String DIRECTOR = "Director";
@@ -41,7 +42,7 @@ public class FusableMovie extends Movie implements Fusable {
 		}
 	}
 	
-	public FusableMovie(String identifier, String provenance) {
+	public FusableCity(String identifier, String provenance) {
 		super(identifier, provenance);
 	}
 

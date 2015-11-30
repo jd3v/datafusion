@@ -16,6 +16,7 @@ import de.uni_mannheim.informatik.wdi.datafusion.DataFusionEngine;
 import de.uni_mannheim.informatik.wdi.datafusion.DataFusionStrategy;
 import de.uni_mannheim.informatik.wdi.datafusion.FusableDataSet;
 import de.uni_mannheim.informatik.wdi.datafusion.evaluation.DataFusionEvaluator;
+import de.uni_mannheim.informatik.wdi.datafusion.usecase.movies.FusableMovie;
 import de.uni_mannheim.informatik.wdi.datafusion.usecase.movies.evaluation.ActorsEvaluationRule;
 import de.uni_mannheim.informatik.wdi.datafusion.usecase.movies.evaluation.DateEvaluationRule;
 import de.uni_mannheim.informatik.wdi.datafusion.usecase.movies.evaluation.DirectorEvaluationRule;
@@ -25,23 +26,23 @@ import de.uni_mannheim.informatik.wdi.datafusion.usecase.movies.fusers.DateFuser
 import de.uni_mannheim.informatik.wdi.datafusion.usecase.movies.fusers.DirectorFuser;
 import de.uni_mannheim.informatik.wdi.datafusion.usecase.movies.fusers.TitleFuser;
 
-public class Movies_Main {
+public class Cities_Main {
 
 	public static void main(String[] args) throws XPathExpressionException, ParserConfigurationException, SAXException, IOException, TransformerException {
 		// load the data sets
 		FusableDataSet<FusableMovie> ds1 = new FusableDataSet<>();
 		FusableDataSet<FusableMovie> ds2 = new FusableDataSet<>();
 		FusableDataSet<FusableMovie> ds3 = new FusableDataSet<>();
-		ds1.loadFromXML(
-				new File("usecase/movie/input/academy_awards.xml"),
-				new FusableMovieFactory(), "/movies/movie");
-		ds2.loadFromXML(
-				new File("usecase/movie/input/actors.xml"),
-				new FusableMovieFactory(), "/movies/movie");
-		ds3.loadFromXML(
-				new File("usecase/movie/input/golden_globes.xml"), 
-				new FusableMovieFactory(), 
-				"/movies/movie");
+//		ds1.loadFromXML(
+//				new File("usecase/movie/input/academy_awards.xml"),
+//				new FusableMovieFactory(), "/movies/movie");
+//		ds2.loadFromXML(
+//				new File("usecase/movie/input/actors.xml"),
+//				new FusableMovieFactory(), "/movies/movie");
+//		ds3.loadFromXML(
+//				new File("usecase/movie/input/golden_globes.xml"), 
+//				new FusableMovieFactory(), 
+//				"/movies/movie");
 		
 		// set dataset metadata
 		ds1.setScore(1.0);
@@ -68,7 +69,7 @@ public class Movies_Main {
 		correspondences.writeGroupSizeDistribution(new File("usecase/movie/output/group_size_distribution.csv"));
 		
 		// define the fusion strategy
-		DataFusionStrategy<FusableMovie> strategy = new DataFusionStrategy<>(new FusableMovieFactory());
+		DataFusionStrategy<FusableMovie> strategy = new DataFusionStrategy<>(new FusableCityFactory());
 		// add attribute fusers
 		// Note: The attribute name is only used for printing the reports
 		strategy.addAttributeFuser("Title", new TitleFuser(), new TitleEvaluationRule());
@@ -92,7 +93,7 @@ public class Movies_Main {
 		DataSet<FusableMovie> gs = new FusableDataSet<>();
 		gs.loadFromXML(
 				new File("usecase/movie/goldstandard/fused.xml"),
-				new FusableMovieFactory(), "/movies/movie");
+				new FusableCityFactory(), "/movies/movie");
 		
 		// evaluate
 		DataFusionEvaluator<FusableMovie> evaluator = new DataFusionEvaluator<>(strategy);
