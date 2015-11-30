@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cities xsi:noNamespaceSchemaLocation="file:///C:/Users/Daniel/Google%20Drive/WDI%20Project/integratedTargetSchema.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<cities>
+  <city>
+    <id>geoname_city_21926</id>
+    <name>warren</name>
+    <population>40633</population>
+    <countrycode>us</countrycode>
+	<lat>41.23756</lat>
+	<long>-80.81842</long>
+    <musicians>
+    	<musician>
+	        <id>musicians9883</id>
+	        <firstname>Sean</firstname>
+	        <lastname>Jones</lastname>
+			<instrument>http://dbpedia.org/resource/Trumpet</instrument>
+	        <background>non_vocal_instrumentalist</background>
+			<genre>http://dbpedia.org/resource/Jazz</genre>
+			<birthDate>1978-05-29</birthDate>
+	        <associatedBand></associatedBand>
+      	</musician>
+      	<musician>
+	        <id>musicians25909</id>
+	        <firstname>Dave; David Eric Grohl</firstname>
+	        <lastname>Grohl</lastname>
+	        <instrument>http://dbpedia.org/resource/Ampeg; http://dbpedia.org/resource/Avedis_Zildjian_Company; http://dbpedia.org/resource/Gibson_ES-335; http://dbpedia.org/resource/Gibson_Explorer; http://dbpedia.org/resource/Gibson_Firebird; http://dbpedia.org/resource/Gibson_SG</instrument>
+	        <background>solo_singer</background>
+	        <genre>http://dbpedia.org/resource/Alternative_rock; http://dbpedia.org/resource/Grunge; http://dbpedia.org/resource/Hard_rock; http://dbpedia.org/resource/Hardcore_punk; http://dbpedia.org/resource/Heavy_metal_music; http://dbpedia.org/resource/Post-grunge; http://dbpedia.org/resource/Punk_rock</genre>
+	        <birthDate>1969-01-14</birthDate>
+	        <associatedBand>http://dbpedia.org/resource/Dain_Bramage; http://dbpedia.org/resource/Foo_Fighters; http://dbpedia.org/resource/Ghost_(Swedish_band); http://dbpedia.org/resource/Nine_Inch_Nails; http://dbpedia.org/resource/Nirvana_(band); http://dbpedia.org/resource/Probot; http://dbpedia.org/resource/Queens_of_the_Stone_Age; http://dbpedia.org/resource/Scream_(band); http://dbpedia.org/resource/Them_Crooked_Vultures</associatedBand>
+      </musician>
+      <musician>
+        <id>musicians25910</id>
+        <firstname>Jerry</firstname>
+        <lastname>Douglas</lastname>
+		<instrument>http://dbpedia.org/resource/Dobro</instrument>
+		<background>non_vocal_instrumentalist</background>
+        <genre></genre>
+		<birthDate>1956-05-28</birthDate>
+        <associatedBand></associatedBand>
+      </musician>
+    </musicians>
+  </city>
+</cities>
