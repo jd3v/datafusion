@@ -1,13 +1,13 @@
 package de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.evaluation;
 
 import de.uni_mannheim.informatik.wdi.datafusion.evaluation.EvaluationRule;
-import de.uni_mannheim.informatik.wdi.datafusion.usecase.movies.FusableMovie;
+import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.FusableCity;
 
-public class LongEvaluationRule extends EvaluationRule<FusableMovie> {
+public class LongEvaluationRule extends EvaluationRule<FusableCity> {
 
 	@Override
-	public boolean isEqual(FusableMovie record1, FusableMovie record2) {
-		return record1.getDirector().equals(record2.getDirector());
+	public boolean isEqual(FusableCity record1, FusableCity record2) {
+		return false;
 	}
 
 }

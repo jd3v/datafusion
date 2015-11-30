@@ -48,12 +48,12 @@ public class FusableCityFactory extends MatchableFactory<FusableCity> implements
 	}
 
 	@Override
-	public FusableMovie createInstanceForFusion(
-			RecordGroup<FusableMovie> cluster) {
+	public FusableCity createInstanceForFusion(
+			RecordGroup<FusableCity> cluster) {
 		
 		List<String> ids = new LinkedList<>();
 		
-		for(FusableMovie m : cluster.getRecords()) {
+		for(FusableCity m : cluster.getRecords()) {
 			ids.add(m.getIdentifier());
 		}
 		
@@ -61,7 +61,7 @@ public class FusableCityFactory extends MatchableFactory<FusableCity> implements
 		
 		String mergedId = StringUtils.join(ids, '+');
 		
-		return new FusableMovie(mergedId, "fused");
+		return new FusableCity(mergedId, "fused");
 	}
 	
 }

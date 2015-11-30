@@ -3,31 +3,31 @@ package de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.fusers;
 import de.uni_mannheim.informatik.wdi.datafusion.AttributeValueFuser;
 import de.uni_mannheim.informatik.wdi.datafusion.FusedValue;
 import de.uni_mannheim.informatik.wdi.datafusion.RecordGroup;
-import de.uni_mannheim.informatik.wdi.datafusion.conflictresolution.meta.FavourSources;
-import de.uni_mannheim.informatik.wdi.datafusion.usecase.movies.FusableMovie;
+import de.uni_mannheim.informatik.wdi.datafusion.conflictresolution.numeric.Median;
+import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.FusableCity;
 
-public class LongFuser extends AttributeValueFuser<String, FusableMovie> {
+public class LongFuser extends AttributeValueFuser<Double, FusableCity> {
 
 	public LongFuser() {
-		super(new FavourSources<String, FusableMovie>());
+		super(new Median<FusableCity>());
 	}
 	
 	@Override
-	public boolean hasValue(FusableMovie record) {
-		return record.hasValue(FusableMovie.DIRECTOR);
+	public boolean hasValue(FusableCity record) {
+		return record.hasValue(FusableCity.LONG);
 	}
 	
 	@Override
-	protected String getValue(FusableMovie record) {
-		return record.getDirector();
+	protected Double getValue(FusableCity record) {
+		return record.getLat();
 	}
 
 	@Override
-	public void fuse(RecordGroup<FusableMovie> group,
-			FusableMovie fusedRecord) {
-		FusedValue<String, FusableMovie> fused = getFusedValue(group);
-		fusedRecord.setDirector(fused.getValue());
-		fusedRecord.setAttributeProvenance(FusableMovie.DIRECTOR, fused.getOriginalIds());
+	public void fuse(RecordGroup<FusableCity> group,
+			FusableCity fusedRecord) {
+		FusedValue<Double, FusableCity> fused = getFusedValue(group);
+		fusedRecord.setLat(fused.getValue());
+		fusedRecord.setAttributeProvenance(FusableCity.LONG, fused.getOriginalIds());
 	}
 
 }

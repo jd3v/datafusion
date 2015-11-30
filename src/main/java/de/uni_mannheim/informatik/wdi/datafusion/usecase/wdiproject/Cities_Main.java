@@ -16,14 +16,16 @@ import de.uni_mannheim.informatik.wdi.datafusion.DataFusionEngine;
 import de.uni_mannheim.informatik.wdi.datafusion.DataFusionStrategy;
 import de.uni_mannheim.informatik.wdi.datafusion.FusableDataSet;
 import de.uni_mannheim.informatik.wdi.datafusion.evaluation.DataFusionEvaluator;
-import de.uni_mannheim.informatik.wdi.datafusion.usecase.movies.evaluation.ActorsEvaluationRule;
-import de.uni_mannheim.informatik.wdi.datafusion.usecase.movies.evaluation.DateEvaluationRule;
-import de.uni_mannheim.informatik.wdi.datafusion.usecase.movies.fusers.ActorsFuser;
-import de.uni_mannheim.informatik.wdi.datafusion.usecase.movies.fusers.DateFuser;
 import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.evaluation.CountryCodeEvaluationRule;
+import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.evaluation.LatEvaluationRule;
+import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.evaluation.LongEvaluationRule;
 import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.evaluation.NameEvaluationRule;
+import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.evaluation.PopulationEvaluationRule;
 import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.fusers.CountryCodeFuser;
+import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.fusers.LatFuser;
+import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.fusers.LongFuser;
 import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.fusers.NameFuser;
+import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.fusers.PopulationFuser;
 
 public class Cities_Main {
 
