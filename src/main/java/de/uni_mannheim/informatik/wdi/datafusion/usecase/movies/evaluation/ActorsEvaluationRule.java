@@ -9,7 +9,7 @@ import de.uni_mannheim.informatik.wdi.datafusion.usecase.movies.FusableMovie;
 
 public class ActorsEvaluationRule extends EvaluationRule<FusableMovie> {
 
-	@Override
+	@Override	
 	public boolean isEqual(FusableMovie record1, FusableMovie record2) {
 		Set<String> actors1 = new HashSet<>();
 		

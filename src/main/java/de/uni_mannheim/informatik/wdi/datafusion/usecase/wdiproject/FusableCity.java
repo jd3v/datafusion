@@ -8,6 +8,8 @@ import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.javadocmd.simplelatlng.LatLng;
+
 import de.uni_mannheim.informatik.wdi.datafusion.Fusable;
 import de.uni_mannheim.informatik.wdi.usecase.wdiproject.City;
 import de.uni_mannheim.informatik.wdi.usecase.wdiproject.Musician;
@@ -16,10 +18,10 @@ public class FusableCity extends City implements Fusable {
 
 	public static final String NAME = "Name";
 	public static final String CC = "Countrycode";
-	public static final int POPULATION = 0;
-	public static final double LAT = 0;
-	public static final double LONG = 0;
-	public static final List<Musician> MUSICIANS = null;
+	public static final String POPULATION = "Population";
+	public static final String LAT = "Latitude";
+	public static final String LONG = "Longitude";
+	public static final String MUSICIANS = "Musicians";
 	
 	private Map<String, Collection<String>> provenance = new HashMap<>();
 	
@@ -63,13 +65,13 @@ public class FusableCity extends City implements Fusable {
 		case CC:
 			return getCc()!=null && !getCc().isEmpty();
 		case POPULATION:
-			return getPopulation()!=null;
+			return getPopulation()>0 ;
 		case LAT:
-			return getLat()!=null;
+			return getLocation()!=null;
 		case LONG:
-			return getLong()!=null;
+			return getLocation()!=null;
 		case MUSICIANS:
-			return getActors()!=null && getActors().size()>0;
+			return getMusicians()!=null && getMusicians().size()>0;
 		default:
 			return false;
 		}
@@ -77,7 +79,7 @@ public class FusableCity extends City implements Fusable {
 	
 	@Override
 	public String toString() {
-		return String.format("[Movie: %s / %s / %s]", getTitle(), getDirector(), getDate().toString());
+		return String.format("[City: %s / %s / %s]", getName(), getPopulation(), getCc());
 	}
 
 }
