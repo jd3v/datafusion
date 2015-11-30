@@ -3,19 +3,23 @@ package de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
 
 import de.uni_mannheim.informatik.wdi.datafusion.Fusable;
 import de.uni_mannheim.informatik.wdi.usecase.wdiproject.City;
+import de.uni_mannheim.informatik.wdi.usecase.wdiproject.Musician;
 
 public class FusableCity extends City implements Fusable {
 
-	public static final String TITLE = "Title";
-	public static final String DIRECTOR = "Director";
-	public static final String DATE = "Date";
-	public static final String ACTORS = "Actors";
+	public static final String NAME = "Name";
+	public static final String CC = "Countrycode";
+	public static final int POPULATION = 0;
+	public static final double LAT = 0;
+	public static final double LONG = 0;
+	public static final List<Musician> MUSICIANS = null;
 	
 	private Map<String, Collection<String>> provenance = new HashMap<>();
 	
@@ -48,19 +52,23 @@ public class FusableCity extends City implements Fusable {
 
 	@Override
 	public Collection<String> getAttributeNames() {
-		return Arrays.asList(new String[] { TITLE, DIRECTOR, DATE, ACTORS});
+		return Arrays.asList(new String[] { NAME, CC, POPULATION, LAT, LONG});
 	}
 
 	@Override
 	public boolean hasValue(String attributeName) {
 		switch (attributeName) {
-		case TITLE:
-			return getTitle()!=null && !getTitle().isEmpty();
-		case DIRECTOR:
-			return getDirector()!=null && !getDirector().isEmpty();
-		case DATE:
-			return getDate()!=null;
-		case ACTORS:
+		case NAME:
+			return getName()!=null && !getName().isEmpty();
+		case CC:
+			return getCc()!=null && !getCc().isEmpty();
+		case POPULATION:
+			return getPopulation()!=null;
+		case LAT:
+			return getLat()!=null;
+		case LONG:
+			return getLong()!=null;
+		case MUSICIANS:
 			return getActors()!=null && getActors().size()>0;
 		default:
 			return false;

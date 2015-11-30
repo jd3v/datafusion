@@ -16,7 +16,7 @@ import de.uni_mannheim.informatik.wdi.datafusion.DataFusionEngine;
 import de.uni_mannheim.informatik.wdi.datafusion.DataFusionStrategy;
 import de.uni_mannheim.informatik.wdi.datafusion.FusableDataSet;
 import de.uni_mannheim.informatik.wdi.datafusion.evaluation.DataFusionEvaluator;
-import de.uni_mannheim.informatik.wdi.datafusion.usecase.movies.FusableMovie;
+import de.uni_mannheim.informatik.wdi.datafusion.usecase.movies.FusableCity;
 import de.uni_mannheim.informatik.wdi.datafusion.usecase.movies.evaluation.ActorsEvaluationRule;
 import de.uni_mannheim.informatik.wdi.datafusion.usecase.movies.evaluation.DateEvaluationRule;
 import de.uni_mannheim.informatik.wdi.datafusion.usecase.movies.evaluation.DirectorEvaluationRule;
@@ -30,9 +30,9 @@ public class Cities_Main {
 
 	public static void main(String[] args) throws XPathExpressionException, ParserConfigurationException, SAXException, IOException, TransformerException {
 		// load the data sets
-		FusableDataSet<FusableMovie> ds1 = new FusableDataSet<>();
-		FusableDataSet<FusableMovie> ds2 = new FusableDataSet<>();
-		FusableDataSet<FusableMovie> ds3 = new FusableDataSet<>();
+		FusableDataSet<FusableCity> ds1 = new FusableDataSet<>();
+		FusableDataSet<FusableCity> ds2 = new FusableDataSet<>();
+		FusableDataSet<FusableCity> ds3 = new FusableDataSet<>();
 //		ds1.loadFromXML(
 //				new File("usecase/movie/input/academy_awards.xml"),
 //				new FusableMovieFactory(), "/movies/movie");
@@ -61,7 +61,7 @@ public class Cities_Main {
 		ds3.printDataSetDensityReport();
 		
 		// load the correspondences
-		CorrespondenceSet<FusableMovie> correspondences = new CorrespondenceSet<>();
+		CorrespondenceSet<FusableCity> correspondences = new CorrespondenceSet<>();
 		correspondences.loadCorrespondences(new File("usecase/movie/correspondences/academy_awards_2_actors_correspondences.csv"), ds1, ds2);
 		correspondences.loadCorrespondences(new File("usecase/movie/correspondences/actors_2_golden_globes_correspondences.csv"), ds2, ds3);
 		
@@ -69,7 +69,7 @@ public class Cities_Main {
 		correspondences.writeGroupSizeDistribution(new File("usecase/movie/output/group_size_distribution.csv"));
 		
 		// define the fusion strategy
-		DataFusionStrategy<FusableMovie> strategy = new DataFusionStrategy<>(new FusableCityFactory());
+		DataFusionStrategy<FusableCity> strategy = new DataFusionStrategy<>(new FusableCityFactory());
 		// add attribute fusers
 		// Note: The attribute name is only used for printing the reports
 		strategy.addAttributeFuser("Title", new TitleFuser(), new TitleEvaluationRule());
@@ -78,29 +78,29 @@ public class Cities_Main {
 		strategy.addAttributeFuser("Actors", new ActorsFuser(), new ActorsEvaluationRule());
 		
 		// create the fusion engine
-		DataFusionEngine<FusableMovie> engine = new DataFusionEngine<>(strategy);
+		DataFusionEngine<FusableCity> engine = new DataFusionEngine<>(strategy);
 		
 		// calculate cluster consistency
 		engine.printClusterConsistencyReport(correspondences);
 		
 		// run the fusion
-		FusableDataSet<FusableMovie> fusedDataSet = engine.run(correspondences);
+		FusableDataSet<FusableCity> fusedDataSet = engine.run(correspondences);
 		
 		// write the result
-		fusedDataSet.writeXML(new File("usecase/movie/output/fused.xml"), new MovieXMLFormatter());
+		fusedDataSet.writeXML(new File("usecase/movie/output/fused.xml"), new CityXMLFormatter());
 		
-		// load the gold standard
-		DataSet<FusableMovie> gs = new FusableDataSet<>();
-		gs.loadFromXML(
-				new File("usecase/movie/goldstandard/fused.xml"),
-				new FusableCityFactory(), "/movies/movie");
-		
-		// evaluate
-		DataFusionEvaluator<FusableMovie> evaluator = new DataFusionEvaluator<>(strategy);
-		evaluator.setVerbose(true);
-		double accuracy = evaluator.evaluate(fusedDataSet, gs);
-		
-		System.out.println(String.format("Accuracy: %.2f", accuracy));
+//		// load the gold standard
+//		DataSet<FusableMovie> gs = new FusableDataSet<>();
+//		gs.loadFromXML(
+//				new File("usecase/movie/goldstandard/fused.xml"),
+//				new FusableCityFactory(), "/movies/movie");
+//		
+//		// evaluate
+//		DataFusionEvaluator<FusableMovie> evaluator = new DataFusionEvaluator<>(strategy);
+//		evaluator.setVerbose(true);
+//		double accuracy = evaluator.evaluate(fusedDataSet, gs);
+//		
+//		System.out.println(String.format("Accuracy: %.2f", accuracy));
 		
 	}
 	
