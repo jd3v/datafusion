@@ -11,17 +11,16 @@ public class NameFuser extends AttributeValueFuser<String, FusableCity> {
 	public NameFuser() {
 		super(new Voting<String, FusableCity>());
 	}
-	
+
 	@Override
-	public void fuse(RecordGroup<FusableCity> group,
-			FusableCity fusedRecord) {
-		
+	public void fuse(RecordGroup<FusableCity> group, FusableCity fusedRecord) {
+
 		// get the fused value
 		FusedValue<String, FusableCity> fused = getFusedValue(group);
-		
+
 		// set the value for the fused record
 		fusedRecord.setName(fused.getValue());
-		
+
 		// add provenance info
 		fusedRecord.setAttributeProvenance(FusableCity.NAME, fused.getOriginalIds());
 	}
@@ -30,7 +29,7 @@ public class NameFuser extends AttributeValueFuser<String, FusableCity> {
 	public boolean hasValue(FusableCity record) {
 		return record.hasValue(FusableCity.NAME);
 	}
-	
+
 	@Override
 	protected String getValue(FusableCity record) {
 		return record.getName();
