@@ -4,6 +4,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import de.uni_mannheim.informatik.wdi.datafusion.XMLFormatter;
+import de.uni_mannheim.informatik.wdi.usecase.wdiproject.Musician;
 
 public class CityXMLFormatter extends XMLFormatter<FusableCity> {
 
@@ -22,9 +23,9 @@ public class CityXMLFormatter extends XMLFormatter<FusableCity> {
 		
 		city.appendChild(createTextElementWithProvenance("name", record.getName(), record.getMergedAttributeProvenance(FusableCity.NAME),doc));
 		city.appendChild(createTextElementWithProvenance("countrycode", record.getCc(), record.getMergedAttributeProvenance(FusableCity.CC),doc));
-		city.appendChild(createTextElementWithProvenance("population", record.getPopulation().toString(), record.getMergedAttributeProvenance(FusableCity.POPULATION),doc));
-		city.appendChild(createTextElementWithProvenance("latitude", record.getLat().toString(), record.getMergedAttributeProvenance(FusableCity.LAT),doc));
-		city.appendChild(createTextElementWithProvenance("longitude", record.getLong().toString(), record.getMergedAttributeProvenance(FusableCity.LONG),doc));
+		city.appendChild(createTextElementWithProvenance("population", String.valueOf(record.getPopulation()), record.getMergedAttributeProvenance(FusableCity.POPULATION),doc));
+		city.appendChild(createTextElementWithProvenance("latitude", String.valueOf(record.getLat()), record.getMergedAttributeProvenance(FusableCity.LAT),doc));
+		city.appendChild(createTextElementWithProvenance("longitude", String.valueOf(record.getLon()), record.getMergedAttributeProvenance(FusableCity.LONG),doc));
 
 		
 		city.appendChild(createActorsElement(record, doc));
@@ -39,11 +40,11 @@ public class CityXMLFormatter extends XMLFormatter<FusableCity> {
 	}
 	
 	protected Element createActorsElement(FusableCity record, Document doc) {
-		Element actorRoot = actorFormatter.createRootElement(doc);
-		actorRoot.setAttribute("provenanec", record.getMergedAttributeProvenance(FusableCity.ACTORS));
+		Element actorRoot = musicianFormatter.createRootElement(doc);
+		actorRoot.setAttribute("provenanec", record.getMergedAttributeProvenance(FusableCity.MUSICIANS));
 		
-		for(Actor a : record.getActors()) {
-			actorRoot.appendChild(actorFormatter.createElementFromRecord(a, doc));
+		for(Musician a : record.getMusicians()) {
+			actorRoot.appendChild(musicianFormatter.createElementFromRecord(a, doc));
 		}
 		
 		return actorRoot;
