@@ -36,7 +36,7 @@
 		</dependency>
 		<dependency>
 			<groupId>de.uni-mannheim.informatik.wdi</groupId>
-			<artifactId>identityresolution</artifactId>
+			<artifactId>wdi</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
