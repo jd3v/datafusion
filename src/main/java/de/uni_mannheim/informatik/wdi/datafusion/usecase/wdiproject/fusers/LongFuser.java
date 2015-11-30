@@ -6,9 +6,9 @@ import de.uni_mannheim.informatik.wdi.datafusion.RecordGroup;
 import de.uni_mannheim.informatik.wdi.datafusion.conflictresolution.meta.FavourSources;
 import de.uni_mannheim.informatik.wdi.datafusion.usecase.movies.FusableMovie;
 
-public class DirectorFuser extends AttributeValueFuser<String, FusableMovie> {
+public class LongFuser extends AttributeValueFuser<String, FusableMovie> {
 
-	public DirectorFuser() {
+	public LongFuser() {
 		super(new FavourSources<String, FusableMovie>());
 	}
 	

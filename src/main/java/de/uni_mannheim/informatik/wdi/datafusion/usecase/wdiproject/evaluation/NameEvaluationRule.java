@@ -5,7 +5,7 @@ import de.uni_mannheim.informatik.wdi.datafusion.usecase.movies.FusableMovie;
 import de.uni_mannheim.informatik.wdi.identityresolution.similarity.SimilarityMeasure;
 import de.uni_mannheim.informatik.wdi.identityresolution.similarity.string.TokenizingJaccardSimilarity;
 
-public class TitleEvaluationRule extends EvaluationRule<FusableMovie> {
+public class NameEvaluationRule extends EvaluationRule<FusableMovie> {
 
 	SimilarityMeasure<String> sim = new TokenizingJaccardSimilarity();
 

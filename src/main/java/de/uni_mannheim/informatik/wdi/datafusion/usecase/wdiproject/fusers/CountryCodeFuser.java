@@ -1,7 +1,5 @@
 package de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.fusers;
 
-import java.util.List;
-
 import de.uni_mannheim.informatik.wdi.datafusion.AttributeValueFuser;
 import de.uni_mannheim.informatik.wdi.datafusion.FusedValue;
 import de.uni_mannheim.informatik.wdi.datafusion.RecordGroup;
@@ -9,9 +7,11 @@ import de.uni_mannheim.informatik.wdi.datafusion.conflictresolution.list.Union;
 import de.uni_mannheim.informatik.wdi.datafusion.usecase.movies.Actor;
 import de.uni_mannheim.informatik.wdi.datafusion.usecase.movies.FusableMovie;
 
-public class ActorsFuser extends AttributeValueFuser<List<Actor>, FusableMovie> {
+import java.util.List;
+
+public class CountryCodeFuser extends AttributeValueFuser<List<Actor>, FusableMovie> {
 	
-	public ActorsFuser() {
+	public CountryCodeFuser() {
 		super(new Union<Actor, FusableMovie>());
 	}
 	

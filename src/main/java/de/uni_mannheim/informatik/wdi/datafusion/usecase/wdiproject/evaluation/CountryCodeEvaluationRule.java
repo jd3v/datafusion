@@ -7,7 +7,7 @@ import de.uni_mannheim.informatik.wdi.datafusion.evaluation.EvaluationRule;
 import de.uni_mannheim.informatik.wdi.datafusion.usecase.movies.Actor;
 import de.uni_mannheim.informatik.wdi.datafusion.usecase.movies.FusableMovie;
 
-public class ActorsEvaluationRule extends EvaluationRule<FusableMovie> {
+public class CountryCodeEvaluationRule extends EvaluationRule<FusableMovie> {
 
 	@Override
 	public boolean isEqual(FusableMovie record1, FusableMovie record2) {

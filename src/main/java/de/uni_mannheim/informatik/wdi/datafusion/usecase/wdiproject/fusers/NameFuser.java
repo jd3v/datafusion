@@ -6,9 +6,9 @@ import de.uni_mannheim.informatik.wdi.datafusion.RecordGroup;
 import de.uni_mannheim.informatik.wdi.datafusion.conflictresolution.string.LongestString;
 import de.uni_mannheim.informatik.wdi.datafusion.usecase.movies.FusableMovie;
 
-public class TitleFuser extends AttributeValueFuser<String, FusableMovie> {
+public class NameFuser extends AttributeValueFuser<String, FusableMovie> {
 
-	public TitleFuser() {
+	public NameFuser() {
 		super(new LongestString<FusableMovie>());
 	}
 	

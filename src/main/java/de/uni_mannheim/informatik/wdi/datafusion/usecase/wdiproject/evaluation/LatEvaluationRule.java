@@ -3,7 +3,7 @@ package de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.evaluation;
 import de.uni_mannheim.informatik.wdi.datafusion.evaluation.EvaluationRule;
 import de.uni_mannheim.informatik.wdi.datafusion.usecase.movies.FusableMovie;
 
-public class DateEvaluationRule extends EvaluationRule<FusableMovie> {
+public class LatEvaluationRule extends EvaluationRule<FusableMovie> {
 
 	@Override
 	public boolean isEqual(FusableMovie record1, FusableMovie record2) {
