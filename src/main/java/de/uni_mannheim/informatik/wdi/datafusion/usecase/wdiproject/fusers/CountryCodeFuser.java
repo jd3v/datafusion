@@ -3,34 +3,31 @@ package de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.fusers;
 import de.uni_mannheim.informatik.wdi.datafusion.AttributeValueFuser;
 import de.uni_mannheim.informatik.wdi.datafusion.FusedValue;
 import de.uni_mannheim.informatik.wdi.datafusion.RecordGroup;
-import de.uni_mannheim.informatik.wdi.datafusion.conflictresolution.list.Union;
-import de.uni_mannheim.informatik.wdi.datafusion.usecase.movies.Actor;
-import de.uni_mannheim.informatik.wdi.datafusion.usecase.movies.FusableMovie;
+import de.uni_mannheim.informatik.wdi.datafusion.conflictresolution.string.ShortestString;
+import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.FusableCity;
 
-import java.util.List;
-
-public class CountryCodeFuser extends AttributeValueFuser<List<Actor>, FusableMovie> {
+public class CountryCodeFuser extends AttributeValueFuser<String, FusableCity> {
 	
 	public CountryCodeFuser() {
-		super(new Union<Actor, FusableMovie>());
+		super(new ShortestString<FusableCity>());
 	}
 	
 	@Override
-	public boolean hasValue(FusableMovie record) {
-		return record.hasValue(FusableMovie.ACTORS);
+	public boolean hasValue(FusableCity record) {
+		return record.hasValue(FusableCity.CC);
 	}
 	
 	@Override
-	protected List<Actor> getValue(FusableMovie record) {
-		return record.getActors();
+	protected String getValue(FusableCity record) {
+		return record.getCc();
 	}
 
 	@Override
-	public void fuse(RecordGroup<FusableMovie> group,
-			FusableMovie fusedRecord) {
-		FusedValue<List<Actor>, FusableMovie> fused = getFusedValue(group);
-		fusedRecord.setActors(fused.getValue());
-		fusedRecord.setAttributeProvenance(FusableMovie.ACTORS, fused.getOriginalIds());
+	public void fuse(RecordGroup<FusableCity> group,
+			FusableCity fusedRecord) {
+		FusedValue<String, FusableCity> fused = getFusedValue(group);
+		fusedRecord.setCc(fused.getValue());
+		fusedRecord.setAttributeProvenance(FusableCity.CC, fused.getOriginalIds());
 	}
 
 }
