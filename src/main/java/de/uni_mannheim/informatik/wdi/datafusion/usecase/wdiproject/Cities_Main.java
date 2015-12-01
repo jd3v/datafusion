@@ -8,7 +8,6 @@ import de.uni_mannheim.informatik.wdi.datafusion.FusableDataSet;
 import de.uni_mannheim.informatik.wdi.datafusion.evaluation.DataFusionEvaluator;
 import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.evaluation.*;
 import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.fusers.*;
-import org.joda.time.DateTime;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -30,11 +29,13 @@ public class Cities_Main {
 		maxmind.loadFromXML(new File("usecase/wdiproject/input/maxmind.xml"), new FusableCityFactory(), "/cities/city");
 		dbpedia.loadFromXML(new File("usecase/wdiproject/input/cities_v3.xml"), new FusableCityFactory(), "/cities/city");
 
-		// set dataset metadata geonames.setScore(1.0);
+		// set dataset metadata
+		geonames.setScore(3.0);
 		maxmind.setScore(2.0);
-		dbpedia.setScore(3.0); geonames.setDate(DateTime.parse("2012-01-01"));
-		maxmind.setDate(DateTime.parse("2010-01-01"));
-		dbpedia.setDate(DateTime.parse("2008-01-01"));
+		dbpedia.setScore(1.0);
+//		geonames.setDate(DateTime.parse("2012-01-01"));
+//		maxmind.setDate(DateTime.parse("2010-01-01"));
+//		dbpedia.setDate(DateTime.parse("2008-01-01"));
 
 		// print dataset density
 		System.out.println("geonames.xml"); geonames.printDataSetDensityReport();
