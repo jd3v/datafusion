@@ -27,7 +27,7 @@ public class FusableCityFactory extends MatchableFactory<FusableCity> implements
 		city.setCc(getValueFromChildElement(node, "cc"));
 		city.setPopulation(Integer.valueOf(getValueFromChildElement(node, "population")));
 		city.setLat(Double.valueOf(getValueFromChildElement(node,"lat")));
-		city.setLon(Double.valueOf(getValueFromChildElement(node, "lon")));
+		city.setLon(Double.valueOf(getValueFromChildElement(node, "long")));
 		
 		
 //		String director = getValueFromChildElement(node, "director");
