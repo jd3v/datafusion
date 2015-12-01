@@ -37,8 +37,8 @@ public class Cities_Main {
 		FusableDataSet<FusableCity> ds3 = new FusableDataSet<>();
 		
 		ds1.loadFromXML(new File("usecase/wdiproject/input/geonames.xml"), new FusableCityFactory(), "/movies/movie");
-		ds2.loadFromXML(new File("usecase/movie/input/actors.xml"), new FusableCityFactory(), "/movies/movie");
-		ds3.loadFromXML(new File("usecase/movie/input/golden_globes.xml"), new FusableCityFactory(), "/movies/movie");
+		ds2.loadFromXML(new File("usecase/wdiproject/input/geonames.xml"), new FusableCityFactory(), "/movies/movie");
+		ds3.loadFromXML(new File("usecase/wdiproject/input/geonames.xml"), new FusableCityFactory(), "/movies/movie");
 
 		// set dataset metadata
 		ds1.setScore(1.0);
