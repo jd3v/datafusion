@@ -1,69 +1,56 @@
 package de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject;
 
-import java.io.File;
-import java.io.IOException;
-
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
-import javax.xml.xpath.XPathExpressionException;
-
-import org.joda.time.DateTime;
-import org.xml.sax.SAXException;
-
 import de.uni_mannheim.informatik.wdi.DataSet;
 import de.uni_mannheim.informatik.wdi.datafusion.CorrespondenceSet;
 import de.uni_mannheim.informatik.wdi.datafusion.DataFusionEngine;
 import de.uni_mannheim.informatik.wdi.datafusion.DataFusionStrategy;
 import de.uni_mannheim.informatik.wdi.datafusion.FusableDataSet;
 import de.uni_mannheim.informatik.wdi.datafusion.evaluation.DataFusionEvaluator;
-import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.evaluation.CountryCodeEvaluationRule;
-import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.evaluation.LatEvaluationRule;
-import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.evaluation.LongEvaluationRule;
-import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.evaluation.NameEvaluationRule;
-import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.evaluation.PopulationEvaluationRule;
-import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.fusers.CountryCodeFuser;
-import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.fusers.LatFuser;
-import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.fusers.LongFuser;
-import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.fusers.NameFuser;
-import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.fusers.PopulationFuser;
+import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.evaluation.*;
+import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.fusers.*;
+import org.joda.time.DateTime;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.xpath.XPathExpressionException;
+import java.io.File;
+import java.io.IOException;
 
 public class Cities_Main {
 
 	public static void main(String[] args) throws XPathExpressionException, ParserConfigurationException, SAXException,
 			IOException, TransformerException {
 		// load the data sets
-		FusableDataSet<FusableCity> ds1 = new FusableDataSet<>();
-		FusableDataSet<FusableCity> ds2 = new FusableDataSet<>();
-		FusableDataSet<FusableCity> ds3 = new FusableDataSet<>();
-		
-		ds1.loadFromXML(new File("usecase/wdiproject/input/geonames.xml"), new FusableCityFactory(), "/cities/city");
-		ds2.loadFromXML(new File("usecase/wdiproject/input/maxmind.xml"), new FusableCityFactory(), "/cities/city");
-		ds3.loadFromXML(new File("usecase/wdiproject/input/cities_v3.xml"), new FusableCityFactory(), "/cities/city");
+		FusableDataSet<FusableCity> geonames = new FusableDataSet<>();
+		FusableDataSet<FusableCity> maxmind = new FusableDataSet<>();
+		FusableDataSet<FusableCity> dbpedia = new FusableDataSet<>();
 
-		// set dataset metadata
-		ds1.setScore(1.0);
-		ds2.setScore(2.0);
-		ds3.setScore(3.0);
-		ds1.setDate(DateTime.parse("2012-01-01"));
-		ds2.setDate(DateTime.parse("2010-01-01"));
-		ds3.setDate(DateTime.parse("2008-01-01"));
+		geonames.loadFromXML(new File("usecase/wdiproject/input/geonames.xml"), new FusableCityFactory(), "/cities/city");
+		maxmind.loadFromXML(new File("usecase/wdiproject/input/maxmind.xml"), new FusableCityFactory(), "/cities/city");
+		dbpedia.loadFromXML(new File("usecase/wdiproject/input/cities_v3.xml"), new FusableCityFactory(), "/cities/city");
+
+		// set dataset metadata geonames.setScore(1.0);
+		maxmind.setScore(2.0);
+		dbpedia.setScore(3.0); geonames.setDate(DateTime.parse("2012-01-01"));
+		maxmind.setDate(DateTime.parse("2010-01-01"));
+		dbpedia.setDate(DateTime.parse("2008-01-01"));
 
 		// print dataset density
-		System.out.println("geonames.xml");
-		ds1.printDataSetDensityReport();
+		System.out.println("geonames.xml"); geonames.printDataSetDensityReport();
 		System.out.println("maxmind.xml");
-		ds2.printDataSetDensityReport();
+		maxmind.printDataSetDensityReport();
 		System.out.println("cities_v3.xml");
-		ds3.printDataSetDensityReport();
+		dbpedia.printDataSetDensityReport();
 
 		// load the correspondences
 		CorrespondenceSet<FusableCity> correspondences = new CorrespondenceSet<>();
 		correspondences.loadCorrespondences(
-				new File("usecase/wdiproject/correspondences/geonames2dbpedia_correspondences.csv"), ds1, ds3);
+				new File("usecase/wdiproject/correspondences/geonames2dbpedia_correspondences.csv"), geonames, dbpedia);
 		correspondences.loadCorrespondences(
-				new File("usecase/wdiproject/correspondences/geonames2maxmind_correspondences.csv"), ds1, ds2);
+				new File("usecase/wdiproject/correspondences/geonames2maxmind_correspondences.csv"), geonames, maxmind);
 		correspondences.loadCorrespondences(
-				new File("usecase/wdiproject/correspondences/maxmind2dbpedia_correspondences.csv"), ds2, ds3);
+				new File("usecase/wdiproject/correspondences/maxmind2dbpedia_correspondences.csv"), maxmind, dbpedia);
 
 		// write group size distribution
 		correspondences.writeGroupSizeDistribution(new File("usecase/wdiproject/output/group_size_distribution.csv"));
