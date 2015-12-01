@@ -36,9 +36,9 @@ public class Cities_Main {
 		FusableDataSet<FusableCity> ds2 = new FusableDataSet<>();
 		FusableDataSet<FusableCity> ds3 = new FusableDataSet<>();
 		
-		ds1.loadFromXML(new File("usecase/wdiproject/input/geonames.xml"), new FusableCityFactory(), "/movies/movie");
-		ds2.loadFromXML(new File("usecase/wdiproject/input/geonames.xml"), new FusableCityFactory(), "/movies/movie");
-		ds3.loadFromXML(new File("usecase/wdiproject/input/geonames.xml"), new FusableCityFactory(), "/movies/movie");
+		ds1.loadFromXML(new File("usecase/wdiproject/input/geonames.xml"), new FusableCityFactory(), "/cities/city");
+		ds2.loadFromXML(new File("usecase/wdiproject/input/maxmind.xml"), new FusableCityFactory(), "/cities/city");
+		ds3.loadFromXML(new File("usecase/wdiproject/input/cities_v3.xml"), new FusableCityFactory(), "/cities/city");
 
 		// set dataset metadata
 		ds1.setScore(1.0);
@@ -49,19 +49,21 @@ public class Cities_Main {
 		ds3.setDate(DateTime.parse("2008-01-01"));
 
 		// print dataset density
-		System.out.println("academy_awards.xml");
+		System.out.println("geonames.xml");
 		ds1.printDataSetDensityReport();
-		System.out.println("actors.xml");
+		System.out.println("maxmind.xml");
 		ds2.printDataSetDensityReport();
-		System.out.println("golden_globes.xml");
+		System.out.println("cities_v3.xml");
 		ds3.printDataSetDensityReport();
 
 		// load the correspondences
 		CorrespondenceSet<FusableCity> correspondences = new CorrespondenceSet<>();
 		correspondences.loadCorrespondences(
-				new File("usecase/movie/correspondences/academy_awards_2_actors_correspondences.csv"), ds1, ds2);
+				new File("usecase/wdiproject/correspondences/geonames2dbpedia_correspondences.csv"), ds1, ds3);
 		correspondences.loadCorrespondences(
-				new File("usecase/movie/correspondences/actors_2_golden_globes_correspondences.csv"), ds2, ds3);
+				new File("usecase/wdiproject/correspondences/geonames2maxmind_correspondences.csv"), ds1, ds2);
+		correspondences.loadCorrespondences(
+				new File("usecase/wdiproject/correspondences/maxmind2dbpedia_correspondences.csv"), ds2, ds3);
 
 		// write group size distribution
 		correspondences.writeGroupSizeDistribution(new File("usecase/wdiproject/output/group_size_distribution.csv"));
@@ -92,7 +94,7 @@ public class Cities_Main {
 		 // load the gold standard
 		 DataSet<FusableCity> gs = new FusableDataSet<>();
 		 gs.loadFromXML(
-		 new File("usecase/wdiproject/goldstandard/fused.xml"),
+		 new File("usecase/wdiproject/goldstandard/goldstandard_v5.xml"),
 		 new FusableCityFactory(), "/cities/city");
 		
 		 // evaluate
