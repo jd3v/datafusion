@@ -47,11 +47,11 @@ public class Cities_Main {
 		// load the correspondences
 		CorrespondenceSet<FusableCity> correspondences = new CorrespondenceSet<>();
 		correspondences.loadCorrespondences(
-				new File("usecase/wdiproject/correspondences/geonames2dbpedia_correspondences.csv"), geonames, dbpedia);
+				new File("usecase/wdiproject/correspondences/Geonames_2_DBpedia_correspondences.csv"), geonames, dbpedia);
 		correspondences.loadCorrespondences(
-				new File("usecase/wdiproject/correspondences/geonames2maxmind_correspondences.csv"), geonames, maxmind);
-		correspondences.loadCorrespondences(
-				new File("usecase/wdiproject/correspondences/maxmind2dbpedia_correspondences.csv"), maxmind, dbpedia);
+				new File("usecase/wdiproject/correspondences/Geonames_2_Maxmind_correspondences.csv"), geonames, maxmind);
+//		correspondences.loadCorrespondences(
+//				new File("usecase/wdiproject/correspondences/maxmind2dbpedia_correspondences.csv"), maxmind, dbpedia);
 
 		// write group size distribution
 		correspondences.writeGroupSizeDistribution(new File("usecase/wdiproject/output/group_size_distribution.csv"));
@@ -61,7 +61,7 @@ public class Cities_Main {
 		// add attribute fusers
 		// Note: The attribute name is only used for printing the reports
 		strategy.addAttributeFuser("Name", new NameFuser(), new NameEvaluationRule());
-		strategy.addAttributeFuser("ContryCode", new CountryCodeFuser(), new CountryCodeEvaluationRule());
+		strategy.addAttributeFuser("CountryCode", new CountryCodeFuser(), new CountryCodeEvaluationRule());
 		strategy.addAttributeFuser("Population", new PopulationFuser(), new PopulationEvaluationRule());
 		strategy.addAttributeFuser("Lat", new LatFuser(), new LatEvaluationRule());
 		strategy.addAttributeFuser("Long", new LongFuser(), new LongEvaluationRule());

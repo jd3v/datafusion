@@ -17,7 +17,7 @@ import de.uni_mannheim.informatik.wdi.usecase.wdiproject.Musician;
 public class FusableCity extends City implements Fusable {
 
 	public static final String NAME = "Name";
-	public static final String CC = "Countrycode";
+	public static final String COUNTRYCODE = "Countrycode";
 	public static final String POPULATION = "Population";
 	public static final String LAT = "Latitude";
 	public static final String LONG = "Longitude";
@@ -54,7 +54,7 @@ public class FusableCity extends City implements Fusable {
 
 	@Override
 	public Collection<String> getAttributeNames() {
-		return Arrays.asList(new String[] { NAME, CC, POPULATION, LAT, LONG});
+		return Arrays.asList(new String[] { NAME, COUNTRYCODE, POPULATION, LAT, LONG});
 	}
 
 	@Override
@@ -62,7 +62,7 @@ public class FusableCity extends City implements Fusable {
 		switch (attributeName) {
 		case NAME:
 			return getName()!=null && !getName().isEmpty();
-		case CC:
+		case COUNTRYCODE:
 			return getCc()!=null && !getCc().isEmpty();
 		case POPULATION:
 			return getPopulation()>0 ;

@@ -22,13 +22,13 @@ public class CityXMLFormatter extends XMLFormatter<FusableCity> {
 		city.appendChild(createTextElement("id", record.getIdentifier(), doc));
 		
 		city.appendChild(createTextElementWithProvenance("name", record.getName(), record.getMergedAttributeProvenance(FusableCity.NAME),doc));
-		city.appendChild(createTextElementWithProvenance("countrycode", record.getCc(), record.getMergedAttributeProvenance(FusableCity.CC),doc));
+		city.appendChild(createTextElementWithProvenance("countrycode", record.getCc(), record.getMergedAttributeProvenance(FusableCity.COUNTRYCODE),doc));
 		city.appendChild(createTextElementWithProvenance("population", String.valueOf(record.getPopulation()), record.getMergedAttributeProvenance(FusableCity.POPULATION),doc));
 		city.appendChild(createTextElementWithProvenance("latitude", String.valueOf(record.getLat()), record.getMergedAttributeProvenance(FusableCity.LAT),doc));
 		city.appendChild(createTextElementWithProvenance("longitude", String.valueOf(record.getLon()), record.getMergedAttributeProvenance(FusableCity.LONG),doc));
 
 		
-		city.appendChild(createActorsElement(record, doc));
+		city.appendChild(createMusiciansElement(record, doc));
 		
 		return city;
 	}
@@ -39,15 +39,15 @@ public class CityXMLFormatter extends XMLFormatter<FusableCity> {
 		return elem;
 	}
 	
-	protected Element createActorsElement(FusableCity record, Document doc) {
-		Element actorRoot = musicianFormatter.createRootElement(doc);
-		actorRoot.setAttribute("provenanec", record.getMergedAttributeProvenance(FusableCity.MUSICIANS));
+	protected Element createMusiciansElement(FusableCity record, Document doc) {
+		Element musicianRoot = musicianFormatter.createRootElement(doc);
+		musicianRoot.setAttribute("provenanec", record.getMergedAttributeProvenance(FusableCity.MUSICIANS));
 		
 		for(Musician a : record.getMusicians()) {
-			actorRoot.appendChild(musicianFormatter.createElementFromRecord(a, doc));
+			musicianRoot.appendChild(musicianFormatter.createElementFromRecord(a, doc));
 		}
 		
-		return actorRoot;
+		return musicianRoot;
 	}
 	
 }

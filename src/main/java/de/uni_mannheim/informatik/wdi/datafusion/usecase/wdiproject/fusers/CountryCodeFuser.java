@@ -14,7 +14,7 @@ public class CountryCodeFuser extends AttributeValueFuser<String, FusableCity> {
 	
 	@Override
 	public boolean hasValue(FusableCity record) {
-		return record.hasValue(FusableCity.CC);
+		return record.hasValue(FusableCity.COUNTRYCODE);
 	}
 	
 	@Override
@@ -27,7 +27,7 @@ public class CountryCodeFuser extends AttributeValueFuser<String, FusableCity> {
 			FusableCity fusedRecord) {
 		FusedValue<String, FusableCity> fused = getFusedValue(group);
 		fusedRecord.setCc(fused.getValue());
-		fusedRecord.setAttributeProvenance(FusableCity.CC, fused.getOriginalIds());
+		fusedRecord.setAttributeProvenance(FusableCity.COUNTRYCODE, fused.getOriginalIds());
 	}
 
 }

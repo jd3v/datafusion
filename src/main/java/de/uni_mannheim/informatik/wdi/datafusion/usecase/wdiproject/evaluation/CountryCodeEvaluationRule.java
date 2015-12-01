@@ -8,7 +8,7 @@ public class CountryCodeEvaluationRule extends EvaluationRule<FusableCity> {
 
 	@Override
 	public boolean isEqual(FusableCity record1, FusableCity record2) {
-		return record1.getCc() == record2.getCc();
+		return record1.getCc().equals(record2.getCc());
 	}
 
 }
