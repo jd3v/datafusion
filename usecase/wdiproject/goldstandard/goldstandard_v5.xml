@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cities xsi:noNamespaceSchemaLocation="file:///C:/Users/Daniel/Google%20Drive/WDI%20Project/integratedTargetSchema.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-<cities>
   <city>
     <id>geoname_city_21926</id>
     <name>warren</name>
@@ -57,7 +56,7 @@
 			<genre>garage music (north america); house music</genre>
 			<birthDate>1973-06-24</birthDate>
       	</musician>
-    <musicians>
+    </musicians>
   </city>
   <city>
     <id>geoname_city_4749</id>
@@ -100,12 +99,12 @@
 			<birthDate>1971-10-02</birthDate>
 	        <associatedBand>brothers keepers; kool savas; kris menace; söhne mannheims; zeichen der zeit</associatedBand>
       	</musician>
-    <musicians>
+    </musicians>
   </city>
   <city>
  <id>maxmind_city_14901</id>
  <name>san juan</name>
- <population>365,575</population>
+ <population>365575</population>
  <countrycode>us</countrycode>
  <lat>18.4683333</lat>
  <long>-66.1061111</long>
@@ -140,12 +139,12 @@
         <genre>funktronica</genre>
         <birthDate>1979-11-10</birthDate>
    </musician>
- <musicians>
+ </musicians>
 </city>
 <city>
  <id>geoname_city_3978</id>
  <name>cartagena</name>
- <population>845,801</population>
+ <population>845801</population>
  <countrycode>co</countrycode>
  <lat>10.39972</lat>
  <long>-75.51444</long>
@@ -170,6 +169,6 @@
 				 <birthdate>1955-11-01</birthdate>
 				 <associatedband>checo acosta; fruko y sus tesos; the latin brothers</associatedband>
      </musician>
- <musicians>
+ </musicians>
 </city>
 </cities>
