@@ -29,7 +29,6 @@ public class FusableCityFactory extends MatchableFactory<FusableCity> implements
 		city.setLat(Double.valueOf(getValueFromChildElement(node,"lat")));
 		city.setLon(Double.valueOf(getValueFromChildElement(node, "long")));
 		
-		
 //		String director = getValueFromChildElement(node, "director");
 //		if(director!=null) {
 //			city.setDirector(director.replace("\n", " "));
