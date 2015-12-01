@@ -59,9 +59,11 @@ public class Cities_Main {
 		// load the correspondences
 		CorrespondenceSet<FusableCity> correspondences = new CorrespondenceSet<>();
 		correspondences.loadCorrespondences(
-				new File("usecase/movie/correspondences/academy_awards_2_actors_correspondences.csv"), ds1, ds2);
+				new File("usecase/wdiproject/correspondences/geonames2dbpedia_correspondences.csv"), ds1, ds3);
 		correspondences.loadCorrespondences(
-				new File("usecase/movie/correspondences/actors_2_golden_globes_correspondences.csv"), ds2, ds3);
+				new File("usecase/wdiproject/correspondences/geonames2maxmind_correspondences.csv"), ds1, ds2);
+		correspondences.loadCorrespondences(
+				new File("usecase/wdiproject/correspondences/maxmind2dbpedia_correspondences.csv"), ds2, ds3);
 
 		// write group size distribution
 		correspondences.writeGroupSizeDistribution(new File("usecase/wdiproject/output/group_size_distribution.csv"));
