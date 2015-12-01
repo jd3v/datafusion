@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cities xsi:noNamespaceSchemaLocation="file:///C:/Users/Daniel/Google%20Drive/WDI%20Project/integratedTargetSchema.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<cities>
+  <city>
+    <id>geoname_city_21926</id>
+    <name>warren</name>
+    <population>40633</population>
+    <countrycode>us</countrycode>
+	<lat>41.23756</lat>
+	<long>-80.81842</long>
+    <musicians>
+    	<musician>
+	        <id>musicians9883</id>
+	        <firstname>sean</firstname>
+	        <lastname>jones</lastname>
+			<instrument>trumpet</instrument>
+	        <background>non vocal instrumentalist</background>
+			<genre>jazz</genre>
+			<birthDate>1978-05-29</birthDate>
+	        <associatedBand></associatedBand>
+      	</musician>
+      	<musician>
+	        <id>musicians25909</id>
+	        <firstname>dave; david eric grohl</firstname>
+	        <lastname>grohl</lastname>
+	        <instrument>ampeg; avedis zildjian company; gibson es-335; gibson explorer; gibson firebird; gibson sg</instrument>
+	        <background>solo singer</background>
+	        <genre>alternative rock; grunge; hard rock; hardcore punk; heavy metal music; post-grunge; punk rock</genre>
+	        <birthDate>1969-01-14</birthDate>
+	        <associatedBand>dain bramage; foo fighters; ghost (swedish band); nine inch nails; nirvana (band); probot; queens of the stone age; scream (band); them crooked vultures</associatedBand>
+     	</musician>
+      	<musician>
+	        <id>musicians25910</id>
+	        <firstname>jerry</firstname>
+	        <lastname>douglas</lastname>
+			<instrument>dobro</instrument>
+			<background>non vocal instrumentalist</background>
+	        <genre></genre>
+			<birthDate>1956-05-28</birthDate>
+	        <associatedBand></associatedBand>
+      	</musician>
+    </musicians>
+  </city>
+  <city>
+    <id>geoname_city_4750</id>
+    <name>mainz</name>
+    <population>206991</population>
+    <countrycode>de</countrycode>
+	<lat>49.98419</lat>
+	<long>8.2791</long>
+    <musicians>
+    	<musician>
+	        <id>musicians20736</id>
+	        <firstname>dj; thomas-rené gerlach</firstname>
+	        <lastname>tonka</lastname>
+			<instrument>non vocal instrumentalist</instrument>
+			<genre>garage music (north america); house music</genre>
+			<birthDate>1973-06-24</birthDate>
+      	</musician>
+    <musicians>
+  </city>
+  <city>
+    <id>geoname_city_4749</id>
+    <name>mannheim</name>
+    <population>299844</population>
+    <countrycode>de</countrycode>
+	<lat>49.49671</lat>
+	<long>8.47955</long>
+    <musicians>
+    	<musician>
+	        <id>musicians3214</id>
+	        <firstname>eric</firstname>
+	        <lastname>van aro</lastname>
+	        <background>solo singer</background>
+			<genre>jazz</genre>
+			<birthDate>1958-08-08</birthDate>
+      	</musician>
+      	<musician>
+	        <id>musicians11347</id>
+	        <firstname>mandy; mandy grace capristo</firstname>
+	        <lastname>capristo</lastname>
+	        <background>solo singer</background>
+			<genre>contemporary r&amp;b; dance-pop; pop music; soul music</genre>
+			<birthDate>1990-03-21</birthDate>
+	        <associatedBand>monrose</associatedBand>
+      	</musician>
+      	<musician>
+	        <id>musicians20893</id>
+	        <firstname>inge</firstname>
+	        <lastname>bruck</lastname>
+	        <background>solo singer</background>
+			<birthDate>1936-11-12</birthDate>
+      	</musician>
+      	<musician>
+	        <id>musicians20894</id>
+	        <firstname>xavier; xavier kurt naidoo</firstname>
+	        <lastname>naidoo</lastname>
+	        <background>solo singer</background>
+			<genre>contemporary r&amp;b; pop music; soul music</genre>
+			<birthDate>1971-10-02</birthDate>
+	        <associatedBand>brothers keepers; kool savas; kris menace; söhne mannheims; zeichen der zeit</associatedBand>
+      	</musician>
+    <musicians>
+  </city>
+  <city>
+ <id>maxmind_city_14901</id>
+ <name>san juan</name>
+ <population>365,575</population>
+ <countrycode>us</countrycode>
+ <lat>18.4683333</lat>
+ <long>-66.1061111</long>
+ <musicians>
+   <musician>
+       <id>musicians3447</id>
+       <firstname>braulio</firstname>
+       <lastname>dueño colón</lastname>
+       <instrument>non performing personnel</instrument>
+       <birthDate>1854-03-26</birthDate>
+     </musician>
+     <musician>
+         <id>musicians3448</id>
+         <firstname>justino</firstname>
+         <lastname>díaz</lastname>
+         <instrument>non performing personnel</instrument>
+         <birthDate>1940-01-29</birthDate>
+     </musician>
+     <musician>
+         <id>musicians9298</id>
+         <firstname>awilda</firstname>
+         <lastname>carbia</lastname>
+         <background>solo singer</background>
+         <genre>comedy</genre>
+         <birthDate>1938-01-30</birthDate>
+    </musician>
+    <musician>
+        <id>musicians23727</id>
+        <firstname>cristina elena garcia; cuci</firstname>
+        <lastname>amador</lastname>
+        <background>solo singer</background>
+        <genre>funktronica</genre>
+        <birthDate>1979-11-10</birthDate>
+   </musician>
+ <musicians>
+</city>
+<city>
+ <id>geoname_city_3978</id>
+ <name>cartagena</name>
+ <population>845,801</population>
+ <countrycode>co</countrycode>
+ <lat>10.39972</lat>
+ <long>-75.51444</long>
+ <musicians>
+   <musician>
+       <id>musicians14005</id>
+       <firstname>erick; erick morillo</firstname>
+       <lastname>morillo</lastname>
+       <instrument>phonograph; sampler (musical instrument)</instrument>
+       <background>non performing personnel</background>
+			 <genre>electro house; house music</genre>
+       <birthDate>1971</birthDate>
+       <associatedband>alexandra burke; audio bullys; deborah cooper; duane harden; eddie thoneick; el general; fiora (musician); harry romero; jocelyn brown; josé nunez; leslie carter; reel 2 real; sean combs; shawnee taylor; terra deva</associatedband>
+     </musician>
+     <musician>
+         <id>musicians12267</id>
+         <firstname>alvaro josé arroyo gonzález; joe</firstname>
+         <lastname>arroyo</lastname>
+         <instrument>singing; wood block</instrument>
+         <background>solo singer</background>
+				 <genre>chandé; cumbia; joeson; porro; salsa music; tropical music</genre>
+				 <birthdate>1955-11-01</birthdate>
+				 <associatedband>checo acosta; fruko y sus tesos; the latin brothers</associatedband>
+     </musician>
+ <musicians>
+</city>
+</cities>
