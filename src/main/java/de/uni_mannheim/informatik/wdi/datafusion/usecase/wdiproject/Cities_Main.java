@@ -50,8 +50,8 @@ public class Cities_Main {
 				new File("usecase/wdiproject/correspondences/Geonames_2_DBpedia_correspondences.csv"), geonames, dbpedia);
 		correspondences.loadCorrespondences(
 				new File("usecase/wdiproject/correspondences/Geonames_2_Maxmind_correspondences.csv"), geonames, maxmind);
-//		correspondences.loadCorrespondences(
-//				new File("usecase/wdiproject/correspondences/maxmind2dbpedia_correspondences.csv"), maxmind, dbpedia);
+		correspondences.loadCorrespondences(
+				new File("usecase/wdiproject/correspondences/Maxmind_2_DBpedia_correspondences.csv"), maxmind, dbpedia);
 
 		// write group size distribution
 		correspondences.writeGroupSizeDistribution(new File("usecase/wdiproject/output/group_size_distribution.csv"));
