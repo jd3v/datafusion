@@ -24,7 +24,7 @@ public class FusableCityFactory extends MatchableFactory<FusableCity> implements
 		
 		// fill the attributes
 		city.setName(getValueFromChildElement(node, "name"));
-		city.setCc(getValueFromChildElement(node, "cc"));
+		city.setCc(getValueFromChildElement(node, "countrycode"));
 		city.setPopulation(Integer.valueOf(getValueFromChildElement(node, "population")));
 		city.setLat(Double.valueOf(getValueFromChildElement(node,"lat")));
 		city.setLon(Double.valueOf(getValueFromChildElement(node, "lon")));
