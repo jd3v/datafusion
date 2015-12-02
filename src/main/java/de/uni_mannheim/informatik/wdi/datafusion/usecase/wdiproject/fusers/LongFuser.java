@@ -19,14 +19,14 @@ public class LongFuser extends AttributeValueFuser<Double, FusableCity> {
 	
 	@Override
 	protected Double getValue(FusableCity record) {
-		return record.getLat();
+		return record.getLon();
 	}
 
 	@Override
 	public void fuse(RecordGroup<FusableCity> group,
 			FusableCity fusedRecord) {
 		FusedValue<Double, FusableCity> fused = getFusedValue(group);
-		fusedRecord.setLat(fused.getValue());
+		fusedRecord.setLon(fused.getValue());
 		fusedRecord.setAttributeProvenance(FusableCity.LONG, fused.getOriginalIds());
 	}
 
