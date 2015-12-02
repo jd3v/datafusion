@@ -51,7 +51,7 @@ public class Cities_Main {
 		correspondences.loadCorrespondences(
 				new File("usecase/wdiproject/correspondences/geonames2maxmind_correspondences_rm_weights.csv"), geonames, maxmind);
 		correspondences.loadCorrespondences(
-				new File("usecase/wdiproject/correspondences/maxmind2dbppedia_correspondences_rm_weights.csv"), maxmind, dbpedia);
+				new File("usecase/wdiproject/correspondences/maxmind2dbpedia_correspondences_rm_weights.csv"), maxmind, dbpedia);
 
 		// write group size distribution
 		correspondences.writeGroupSizeDistribution(new File("usecase/wdiproject/output/group_size_distribution.csv"));
