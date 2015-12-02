@@ -49,6 +49,8 @@ public class DataFusionEvaluator<RecordType extends Matchable & Fusable> {
 	public double evaluate(DataSet<RecordType> dataset, DataSet<RecordType> goldStandard) {
 		
 		int correctValues = 0;
+		int totalCheckedValues = 0;
+		int fusedIsNull = 0;
 		int totalValues = goldStandard.getSize() * strategy.getEvaluationRules().size();
 		
 		for(RecordType record : goldStandard.getRecords()) {
@@ -65,7 +67,10 @@ public class DataFusionEvaluator<RecordType extends Matchable & Fusable> {
 					} else if(verbose) {
 						System.out.println(String.format("[error] %s: %s <> %s", r.getClass().getSimpleName(), fused.toString(), record.toString()));
 					}
+					totalCheckedValues++;
 				}
+			} else {
+				fusedIsNull++;
 			}
 		}
 		
