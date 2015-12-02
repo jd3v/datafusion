@@ -47,11 +47,11 @@ public class Cities_Main {
 		// load the correspondences
 		CorrespondenceSet<FusableCity> correspondences = new CorrespondenceSet<>();
 		correspondences.loadCorrespondences(
-				new File("usecase/wdiproject/correspondences/Geonames_2_DBpedia_correspondences.csv"), geonames, dbpedia);
+				new File("usecase/wdiproject/correspondences/geonames2dbpedia_correspondences_rm_weights.csv"), geonames, dbpedia);
 		correspondences.loadCorrespondences(
-				new File("usecase/wdiproject/correspondences/Geonames_2_Maxmind_correspondences.csv"), geonames, maxmind);
+				new File("usecase/wdiproject/correspondences/geonames2maxmind_correspondences_rm_weights.csv"), geonames, maxmind);
 		correspondences.loadCorrespondences(
-				new File("usecase/wdiproject/correspondences/Maxmind_2_DBpedia_correspondences.csv"), maxmind, dbpedia);
+				new File("usecase/wdiproject/correspondences/maxmind2dbppedia_correspondences_rm_weights.csv"), maxmind, dbpedia);
 
 		// write group size distribution
 		correspondences.writeGroupSizeDistribution(new File("usecase/wdiproject/output/group_size_distribution.csv"));
