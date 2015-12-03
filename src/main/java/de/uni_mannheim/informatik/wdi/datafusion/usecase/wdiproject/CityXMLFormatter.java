@@ -19,7 +19,7 @@ public class CityXMLFormatter extends XMLFormatter<FusableCity> {
 	public Element createElementFromRecord(FusableCity record, Document doc) {
 		Element city = doc.createElement("city");
 
-		city.appendChild(createTextElement("id", record.getIdentifier(), doc));
+		city.appendChild(createTextElement("id", "fused"+record.getId(), doc));
 		
 		city.appendChild(createTextElementWithProvenance("name", record.getName(), record.getMergedAttributeProvenance(FusableCity.NAME),doc));
 		city.appendChild(createTextElementWithProvenance("countrycode", record.getCc(), record.getMergedAttributeProvenance(FusableCity.COUNTRYCODE),doc));
@@ -41,7 +41,7 @@ public class CityXMLFormatter extends XMLFormatter<FusableCity> {
 	
 	protected Element createMusiciansElement(FusableCity record, Document doc) {
 		Element musicianRoot = musicianFormatter.createRootElement(doc);
-		musicianRoot.setAttribute("provenanec", record.getMergedAttributeProvenance(FusableCity.MUSICIANS));
+		musicianRoot.setAttribute("provenance", record.getMergedAttributeProvenance(FusableCity.MUSICIANS));
 		
 		for(Musician a : record.getMusicians()) {
 			musicianRoot.appendChild(musicianFormatter.createElementFromRecord(a, doc));

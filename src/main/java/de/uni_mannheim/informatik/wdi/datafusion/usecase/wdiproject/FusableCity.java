@@ -1,18 +1,13 @@
 package de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject;
 
+import de.uni_mannheim.informatik.wdi.datafusion.Fusable;
+import de.uni_mannheim.informatik.wdi.usecase.wdiproject.City;
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
-import org.apache.commons.lang3.StringUtils;
-
-import com.javadocmd.simplelatlng.LatLng;
-
-import de.uni_mannheim.informatik.wdi.datafusion.Fusable;
-import de.uni_mannheim.informatik.wdi.usecase.wdiproject.City;
-import de.uni_mannheim.informatik.wdi.usecase.wdiproject.Musician;
 
 public class FusableCity extends City implements Fusable {
 
@@ -22,6 +17,7 @@ public class FusableCity extends City implements Fusable {
 	public static final String LAT = "Latitude";
 	public static final String LONG = "Longitude";
 	public static final String MUSICIANS = "Musicians";
+	public static int id = 0;
 	
 	private Map<String, Collection<String>> provenance = new HashMap<>();
 	
@@ -80,6 +76,12 @@ public class FusableCity extends City implements Fusable {
 	@Override
 	public String toString() {
 		return String.format("[City: %s / %s / %s]", getName(), getPopulation(), getCc());
+	}
+
+
+	public int getId() {
+		id++;
+		return id;
 	}
 
 }
