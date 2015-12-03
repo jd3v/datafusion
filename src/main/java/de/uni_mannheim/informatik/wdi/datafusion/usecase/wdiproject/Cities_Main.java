@@ -1,13 +1,13 @@
 package de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject;
 
-import de.uni_mannheim.informatik.wdi.DataSet;
 import de.uni_mannheim.informatik.wdi.datafusion.CorrespondenceSet;
 import de.uni_mannheim.informatik.wdi.datafusion.DataFusionEngine;
 import de.uni_mannheim.informatik.wdi.datafusion.DataFusionStrategy;
 import de.uni_mannheim.informatik.wdi.datafusion.FusableDataSet;
-import de.uni_mannheim.informatik.wdi.datafusion.evaluation.DataFusionEvaluator;
-import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.evaluation.*;
-import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.fusers.*;
+import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.evaluation.CountryCodeEvaluationRule;
+import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.evaluation.NameEvaluationRule;
+import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.fusers.CountryCodeFuser;
+import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.fusers.NameFuser;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -21,37 +21,40 @@ public class Cities_Main {
 	public static void main(String[] args) throws XPathExpressionException, ParserConfigurationException, SAXException,
 			IOException, TransformerException {
 		// load the data sets
-		FusableDataSet<FusableCity> geonames = new FusableDataSet<>();
-		FusableDataSet<FusableCity> maxmind = new FusableDataSet<>();
-		FusableDataSet<FusableCity> dbpedia = new FusableDataSet<>();
+//		FusableDataSet<FusableCity> geonames = new FusableDataSet<>();
+//		FusableDataSet<FusableCity> maxmind = new FusableDataSet<>();
+//		FusableDataSet<FusableCity> dbpedia = new FusableDataSet<>();
+		FusableDataSet<FusableCity> musicians = new FusableDataSet<>();
+		FusableDataSet<FusableCity> fused = new FusableDataSet<>();
 
-		geonames.loadFromXML(new File("usecase/wdiproject/input/geonames.xml"), new FusableCityFactory(), "/cities/city");
-		maxmind.loadFromXML(new File("usecase/wdiproject/input/maxmind.xml"), new FusableCityFactory(), "/cities/city");
-		dbpedia.loadFromXML(new File("usecase/wdiproject/input/cities_v3.xml"), new FusableCityFactory(), "/cities/city");
+//		geonames.loadFromXML(new File("usecase/wdiproject/input/geonames.xml"), new FusableCityFactory(), "/cities/city");
+//		maxmind.loadFromXML(new File("usecase/wdiproject/input/maxmind.xml"), new FusableCityFactory(), "/cities/city");
+//		dbpedia.loadFromXML(new File("usecase/wdiproject/input/cities_v3.xml"), new FusableCityFactory(), "/cities/city");
+		fused.loadFromXML(new File("usecase/wdiproject/input/fused.xml"), new FusableCityFactory(), "/cities/city");
+		musicians.loadFromXML(new File("usecase/wdiproject/input/musicians_v10_cc.xml"), new FusableCityFactory(), "/cities/city");
 
 		// set dataset metadata
-		geonames.setScore(3.0);
-		maxmind.setScore(2.0);
-		dbpedia.setScore(1.0);
+//		geonames.setScore(3.0);
+//		maxmind.setScore(2.0);
+//		dbpedia.setScore(1.0);
+		fused.setScore(2.0);
+		musicians.setScore(1.0);
 //		geonames.setDate(DateTime.parse("2012-01-01"));
 //		maxmind.setDate(DateTime.parse("2010-01-01"));
 //		dbpedia.setDate(DateTime.parse("2008-01-01"));
 
 		// print dataset density
-		System.out.println("geonames.xml"); geonames.printDataSetDensityReport();
-		System.out.println("maxmind.xml");
-		maxmind.printDataSetDensityReport();
-		System.out.println("cities_v3.xml");
-		dbpedia.printDataSetDensityReport();
+		System.out.println("fused.xml");
+		fused.printDataSetDensityReport();
 
 		// load the correspondences
 		CorrespondenceSet<FusableCity> correspondences = new CorrespondenceSet<>();
+//		correspondences.loadCorrespondences(
+//				new File("usecase/wdiproject/correspondences/geonames2dbpedia_correspondences_rm_weights.csv"), geonames, dbpedia);
+//		correspondences.loadCorrespondences(
+//				new File("usecase/wdiproject/correspondences/geonames2maxmind_correspondences_rm_weights.csv"), geonames, maxmind);
 		correspondences.loadCorrespondences(
-				new File("usecase/wdiproject/correspondences/geonames2dbpedia_correspondences_rm_weights.csv"), geonames, dbpedia);
-		correspondences.loadCorrespondences(
-				new File("usecase/wdiproject/correspondences/geonames2maxmind_correspondences_rm_weights.csv"), geonames, maxmind);
-		correspondences.loadCorrespondences(
-				new File("usecase/wdiproject/correspondences/maxmind2dbpedia_correspondences_rm_weights.csv"), maxmind, dbpedia);
+				new File("usecase/wdiproject/correspondences/musicians2fused_correspondences.csv"), fused, musicians);
 
 		// write group size distribution
 		correspondences.writeGroupSizeDistribution(new File("usecase/wdiproject/output/group_size_distribution.csv"));
@@ -62,9 +65,9 @@ public class Cities_Main {
 		// Note: The attribute name is only used for printing the reports
 		strategy.addAttributeFuser("Name", new NameFuser(), new NameEvaluationRule());
 		strategy.addAttributeFuser("CountryCode", new CountryCodeFuser(), new CountryCodeEvaluationRule());
-		strategy.addAttributeFuser("Population", new PopulationFuser(), new PopulationEvaluationRule());
-		strategy.addAttributeFuser("Lat", new LatFuser(), new LatEvaluationRule());
-		strategy.addAttributeFuser("Long", new LongFuser(), new LongEvaluationRule());
+//		strategy.addAttributeFuser("Population", new PopulationFuser(), new PopulationEvaluationRule());
+//		strategy.addAttributeFuser("Lat", new LatFuser(), new LatEvaluationRule());
+//		strategy.addAttributeFuser("Long", new LongFuser(), new LongEvaluationRule());
 
 
 		// create the fusion engine
@@ -77,21 +80,21 @@ public class Cities_Main {
 		FusableDataSet<FusableCity> fusedDataSet = engine.run(correspondences);
 
 		// write the result
-		fusedDataSet.writeXML(new File("usecase/wdiproject/output/fused.xml"), new CityXMLFormatter());
+		fusedDataSet.writeXML(new File("usecase/wdiproject/output/fused_musicians.xml"), new CityXMLFormatter());
 
 		 // load the gold standard
-		 DataSet<FusableCity> gs = new FusableDataSet<>();
-		 gs.loadFromXML(
-		 new File("usecase/wdiproject/goldstandard/goldstandard_v5.xml"),
-		 new FusableCityFactory(), "/cities/city");
-		
-		 // evaluate
-		 DataFusionEvaluator<FusableCity> evaluator = new
-		 DataFusionEvaluator<>(strategy);
-		 evaluator.setVerbose(true);
-		 double accuracy = evaluator.evaluate(fusedDataSet, gs);
-		
-		 System.out.println(String.format("Accuracy: %.2f", accuracy));
+//		 DataSet<FusableCity> gs = new FusableDataSet<>();
+//		 gs.loadFromXML(
+//		 new File("usecase/wdiproject/goldstandard/goldstandard_v5.xml"),
+//		 new FusableCityFactory(), "/cities/city");
+//
+//		 // evaluate
+//		 DataFusionEvaluator<FusableCity> evaluator = new
+//		 DataFusionEvaluator<>(strategy);
+//		 evaluator.setVerbose(true);
+//		 double accuracy = evaluator.evaluate(fusedDataSet, gs);
+//
+//		 System.out.println(String.format("Accuracy: %.2f", accuracy));
 
 	}
 
