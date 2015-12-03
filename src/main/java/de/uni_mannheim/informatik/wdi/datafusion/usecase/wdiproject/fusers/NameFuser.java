@@ -4,12 +4,13 @@ import de.uni_mannheim.informatik.wdi.datafusion.AttributeValueFuser;
 import de.uni_mannheim.informatik.wdi.datafusion.FusedValue;
 import de.uni_mannheim.informatik.wdi.datafusion.RecordGroup;
 import de.uni_mannheim.informatik.wdi.datafusion.conflictresolution.Voting;
+import de.uni_mannheim.informatik.wdi.datafusion.conflictresolution.meta.FavourSources;
 import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.FusableCity;
 
 public class NameFuser extends AttributeValueFuser<String, FusableCity> {
 
 	public NameFuser() {
-		super(new Voting<String, FusableCity>());
+		super(new FavourSources<String, FusableCity>());
 	}
 
 	@Override

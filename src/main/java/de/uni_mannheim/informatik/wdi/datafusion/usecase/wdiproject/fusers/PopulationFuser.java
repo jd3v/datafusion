@@ -3,13 +3,16 @@ package de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.fusers;
 import de.uni_mannheim.informatik.wdi.datafusion.AttributeValueFuser;
 import de.uni_mannheim.informatik.wdi.datafusion.FusedValue;
 import de.uni_mannheim.informatik.wdi.datafusion.RecordGroup;
+import de.uni_mannheim.informatik.wdi.datafusion.conflictresolution.Voting;
+import de.uni_mannheim.informatik.wdi.datafusion.conflictresolution.numeric.Average;
+import de.uni_mannheim.informatik.wdi.datafusion.conflictresolution.numeric.Maximum;
 import de.uni_mannheim.informatik.wdi.datafusion.conflictresolution.numeric.Median;
 import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.FusableCity;
 
 public class PopulationFuser extends AttributeValueFuser<Double, FusableCity> {
 
 	public PopulationFuser() {
-		super(new Median<FusableCity>());
+		super(new Maximum<FusableCity>());
 	}
 	
 	@Override

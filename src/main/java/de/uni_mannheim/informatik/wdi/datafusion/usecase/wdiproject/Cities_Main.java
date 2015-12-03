@@ -27,7 +27,7 @@ public class Cities_Main {
 
 		geonames.loadFromXML(new File("usecase/wdiproject/input/geonames.xml"), new FusableCityFactory(), "/cities/city");
 		maxmind.loadFromXML(new File("usecase/wdiproject/input/maxmind.xml"), new FusableCityFactory(), "/cities/city");
-		dbpedia.loadFromXML(new File("usecase/wdiproject/input/cities_v3.xml"), new FusableCityFactory(), "/cities/city");
+		dbpedia.loadFromXML(new File("usecase/wdiproject/input/cities_v5.xml"), new FusableCityFactory(), "/cities/city");
 
 		// set dataset metadata
 		geonames.setScore(3.0);
@@ -41,17 +41,17 @@ public class Cities_Main {
 		System.out.println("geonames.xml"); geonames.printDataSetDensityReport();
 		System.out.println("maxmind.xml");
 		maxmind.printDataSetDensityReport();
-		System.out.println("cities_v3.xml");
+		System.out.println("cities_v5.xml");
 		dbpedia.printDataSetDensityReport();
 
 		// load the correspondences
 		CorrespondenceSet<FusableCity> correspondences = new CorrespondenceSet<>();
 		correspondences.loadCorrespondences(
-				new File("usecase/wdiproject/correspondences/geonames2dbpedia_correspondences_rm_weights.csv"), geonames, dbpedia);
+				new File("usecase/wdiproject/correspondences/geonames2dbpedia_correspondences_v5.csv"), geonames, dbpedia);
 		correspondences.loadCorrespondences(
-				new File("usecase/wdiproject/correspondences/geonames2maxmind_correspondences_rm_weights.csv"), geonames, maxmind);
+				new File("usecase/wdiproject/correspondences/geonames2maxmind_correspondences_v5.csv"), geonames, maxmind);
 		correspondences.loadCorrespondences(
-				new File("usecase/wdiproject/correspondences/maxmind2dbpedia_correspondences_rm_weights.csv"), maxmind, dbpedia);
+				new File("usecase/wdiproject/correspondences/maxmind2dbpedia_correspondences_v5.csv"), maxmind, dbpedia);
 
 		// write group size distribution
 		correspondences.writeGroupSizeDistribution(new File("usecase/wdiproject/output/group_size_distribution.csv"));
@@ -77,7 +77,7 @@ public class Cities_Main {
 		FusableDataSet<FusableCity> fusedDataSet = engine.run(correspondences);
 
 		// write the result
-		fusedDataSet.writeXML(new File("usecase/wdiproject/output/fused.xml"), new CityXMLFormatter());
+		fusedDataSet.writeXML(new File("usecase/wdiproject/output/fused_v5.xml"), new CityXMLFormatter());
 
 		 // load the gold standard
 		 DataSet<FusableCity> gs = new FusableDataSet<>();
