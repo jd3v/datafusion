@@ -19,16 +19,20 @@ public class CityXMLFormatter extends XMLFormatter<FusableCity> {
 	public Element createElementFromRecord(FusableCity record, Document doc) {
 		Element city = doc.createElement("city");
 
-		city.appendChild(createTextElement("id", "fused"+record.getId(), doc));
+//		city.appendChild(createTextElement("id", "fused"+record.getId(), doc));
+//		city.appendChild(createTextElement("id", record.getIdentifier(), doc));
+		city.appendChild(createTextElementWithProvenance("id", "fused"+record.getId(), record.getIdentifier(),doc));
 		
 		city.appendChild(createTextElementWithProvenance("name", record.getName(), record.getMergedAttributeProvenance(FusableCity.NAME),doc));
-		city.appendChild(createTextElementWithProvenance("countrycode", record.getCc(), record.getMergedAttributeProvenance(FusableCity.COUNTRYCODE),doc));
-		city.appendChild(createTextElementWithProvenance("population", String.valueOf(record.getPopulation()), record.getMergedAttributeProvenance(FusableCity.POPULATION),doc));
-		city.appendChild(createTextElementWithProvenance("latitude", String.valueOf(record.getLat()), record.getMergedAttributeProvenance(FusableCity.LAT),doc));
-		city.appendChild(createTextElementWithProvenance("longitude", String.valueOf(record.getLon()), record.getMergedAttributeProvenance(FusableCity.LONG),doc));
+		city.appendChild(createTextElement("countrycode", record.getCc(), doc));
+		city.appendChild(createTextElement("population", String.valueOf(record.getPopulation()), doc));
+		city.appendChild(createTextElement("latitude", String.valueOf(record.getLat()), doc));
+		city.appendChild(createTextElement("longitude", String.valueOf(record.getLon()),doc));
+	
+		
 
 		
-		city.appendChild(createMusiciansElement(record, doc));
+//		city.appendChild(createMusiciansElement(record, doc));
 		
 		return city;
 	}
