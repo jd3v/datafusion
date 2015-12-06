@@ -5,7 +5,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
-import org.joda.time.DateTime;
 import org.w3c.dom.Node;
 
 import de.uni_mannheim.informatik.wdi.MatchableFactory;

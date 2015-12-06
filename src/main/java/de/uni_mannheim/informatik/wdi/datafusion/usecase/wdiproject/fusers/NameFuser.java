@@ -3,7 +3,6 @@ package de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.fusers;
 import de.uni_mannheim.informatik.wdi.datafusion.AttributeValueFuser;
 import de.uni_mannheim.informatik.wdi.datafusion.FusedValue;
 import de.uni_mannheim.informatik.wdi.datafusion.RecordGroup;
-import de.uni_mannheim.informatik.wdi.datafusion.conflictresolution.Voting;
 import de.uni_mannheim.informatik.wdi.datafusion.conflictresolution.meta.FavourSources;
 import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.FusableCity;
 
