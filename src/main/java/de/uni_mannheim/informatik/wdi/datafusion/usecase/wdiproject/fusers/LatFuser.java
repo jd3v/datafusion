@@ -3,13 +3,14 @@ package de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.fusers;
 import de.uni_mannheim.informatik.wdi.datafusion.AttributeValueFuser;
 import de.uni_mannheim.informatik.wdi.datafusion.FusedValue;
 import de.uni_mannheim.informatik.wdi.datafusion.RecordGroup;
+import de.uni_mannheim.informatik.wdi.datafusion.conflictresolution.meta.FavourSources;
 import de.uni_mannheim.informatik.wdi.datafusion.conflictresolution.numeric.Median;
 import de.uni_mannheim.informatik.wdi.datafusion.usecase.wdiproject.FusableCity;
 
 public class LatFuser extends AttributeValueFuser<Double, FusableCity> {
 
 	public LatFuser() {
-		super(new Median<FusableCity>());
+		super(new FavourSources<Double, FusableCity>());
 	}
 	
 	@Override
